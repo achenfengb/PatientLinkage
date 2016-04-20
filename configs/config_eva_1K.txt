@@ -1,0 +1,16 @@
+party: evaluator | role
+address: localhost | generator address
+port: 9000 | generator port;
+threshold: 1 | | matching threshold from evaluator
+threads: 2 
+records: 1000 | number of records from evaluator
+filter: 1 | open filter (1) or not (0)
+results_save_path: eva.txt
+
+|   id	first	last	email	country	address	  ssn	gender	city	zip	state	bdate          score
+com: 0  12     11      0      0       0         0    0       0      0       0      8         ->   1
+com: 0  0      0       0      0       0         9    0       0      0       0      8         ->   1
+com: 0  0      11      0      0       0         9    0       0      0       0      0         ->   1
+com: 0  S3      S3       0      0       0         9    0       0      0       0      8         ->   1
+
+| com stands for the combination of properties for matching. Here, the numbers in the left of â€?>â€?is are character lengths, and the number in the right is the weight of this combination. For example, â€? 0 6 -> 1â€?means the combination contain 3 characters of 1st property, 6 characters of 3rd property, and the weight is 1. Note, if the character number of the property is â€œSâ€? this property will be encoded by soundex method.
